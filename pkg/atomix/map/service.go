@@ -16,12 +16,12 @@ package _map //nolint:golint
 
 import (
 	"bytes"
-	"github.com/atomix/go-framework/pkg/atomix/errors"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/errors"
 	"io"
 
-	"github.com/atomix/go-framework/pkg/atomix/primitive"
-	"github.com/atomix/go-framework/pkg/atomix/stream"
-	"github.com/atomix/go-framework/pkg/atomix/util"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/primitive"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/stream"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/util"
 	"github.com/golang/protobuf/proto"
 )
 

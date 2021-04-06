@@ -18,8 +18,8 @@ import (
 	"context"
 	"github.com/atomix/api/proto/atomix/headers"
 	"github.com/atomix/api/proto/atomix/primitive"
-	"github.com/atomix/go-framework/pkg/atomix/errors"
-	streams "github.com/atomix/go-framework/pkg/atomix/stream"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/errors"
+	streams "github.com/lucasbfernandes/go-framework/pkg/atomix/stream"
 	"github.com/golang/protobuf/proto"
 	"time"
 )

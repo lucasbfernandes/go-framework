@@ -18,8 +18,8 @@ import (
 	"context"
 	"github.com/atomix/api/proto/atomix/headers"
 	api "github.com/atomix/api/proto/atomix/map"
-	"github.com/atomix/go-framework/pkg/atomix/primitive"
-	streams "github.com/atomix/go-framework/pkg/atomix/stream"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/primitive"
+	streams "github.com/lucasbfernandes/go-framework/pkg/atomix/stream"
 	"github.com/golang/protobuf/proto"
 	log "github.com/sirupsen/logrus"
 )

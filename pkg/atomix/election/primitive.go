@@ -17,8 +17,8 @@ package election
 import (
 	api "github.com/atomix/api/proto/atomix/election"
 	primitiveapi "github.com/atomix/api/proto/atomix/primitive"
-	"github.com/atomix/go-framework/pkg/atomix"
-	"github.com/atomix/go-framework/pkg/atomix/primitive"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/primitive"
 	"google.golang.org/grpc"
 )
 

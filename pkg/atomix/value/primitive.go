@@ -17,8 +17,8 @@ package value
 import (
 	primitiveapi "github.com/atomix/api/proto/atomix/primitive"
 	api "github.com/atomix/api/proto/atomix/value"
-	"github.com/atomix/go-framework/pkg/atomix"
-	"github.com/atomix/go-framework/pkg/atomix/primitive"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/primitive"
 	"google.golang.org/grpc"
 )
 

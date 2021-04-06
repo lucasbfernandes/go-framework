@@ -15,7 +15,7 @@
 package primitive
 
 import (
-	"github.com/atomix/go-framework/pkg/atomix/cluster"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/cluster"
 )
 
 // ProtocolContext provides the current state of the protocol

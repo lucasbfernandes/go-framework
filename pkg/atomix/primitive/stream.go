@@ -16,8 +16,8 @@ package primitive
 
 import (
 	"container/list"
-	streams "github.com/atomix/go-framework/pkg/atomix/stream"
-	"github.com/atomix/go-framework/pkg/atomix/util"
+	streams "github.com/lucasbfernandes/go-framework/pkg/atomix/stream"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/util"
 	"github.com/gogo/protobuf/proto"
 )
 

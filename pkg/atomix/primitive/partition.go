@@ -16,7 +16,7 @@ package primitive
 
 import (
 	"context"
-	"github.com/atomix/go-framework/pkg/atomix/stream"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/stream"
 	"time"
 )
 

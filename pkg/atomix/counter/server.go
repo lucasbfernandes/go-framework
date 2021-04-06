@@ -17,7 +17,7 @@ package counter
 import (
 	"context"
 	api "github.com/atomix/api/proto/atomix/counter"
-	"github.com/atomix/go-framework/pkg/atomix/primitive"
+	"github.com/lucasbfernandes/go-framework/pkg/atomix/primitive"
 	"github.com/gogo/protobuf/proto"
 	log "github.com/sirupsen/logrus"
 )
