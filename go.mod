@@ -1,4 +1,4 @@
-module github.com/atomix/go-framework
+module github.com/lucasbfernandes/go-framework
 
 go 1.13
 
