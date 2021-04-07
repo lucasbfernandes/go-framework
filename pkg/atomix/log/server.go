@@ -351,7 +351,7 @@ func (s *Server) Events(request *api.EventRequest, srv api.LogService_EventsServ
 	}
 
 	for {
-		log.Tracef("DEBUG:WAITING_STREAM_RECEIVE")
+		log.Tracef("DEBUG:WAITING_STREAM_RECEIVE %+v", request.Header)
 		result, ok := stream.Receive()
 		if !ok {
 			log.Tracef("DEBUG:ERROR_STREAM_RECEIVE_NOK")
