@@ -340,27 +340,32 @@ func (s *Server) Events(request *api.EventRequest, srv api.LogService_EventsServ
 		Index:  request.Index,
 	})
 	if err != nil {
+		log.Tracef("DEBUG:ERROR_MARSHALING %+v", err)
 		return err
 	}
 
 	stream := streams.NewBufferedStream()
 	if err := s.DoCommandStream(srv.Context(), opEvents, in, request.Header, stream); err != nil {
+		log.Tracef("DEBUG:ERROR_DO_COMMAND_STREAM %+v", err)
 		return err
 	}
 
 	for {
 		result, ok := stream.Receive()
 		if !ok {
+			log.Tracef("DEBUG:ERROR_STREAM_RECEIVE_NOK")
 			break
 		}
 
 		if result.Failed() {
+			log.Tracef("DEBUG:ERROR_STREAM_RESULT_FAILED %+v", result.Error)
 			return result.Error
 		}
 
 		response := &ListenResponse{}
 		output := result.Value.(primitive.SessionOutput)
 		if err = proto.Unmarshal(output.Value.([]byte), response); err != nil {
+			log.Tracef("DEBUG:ERROR_UNMARSHALING %+v", err)
 			return err
 		}
 
@@ -386,6 +391,7 @@ func (s *Server) Events(request *api.EventRequest, srv api.LogService_EventsServ
 
 		log.Tracef("Sending EventResponse %+v", eventResponse)
 		if err = srv.Send(eventResponse); err != nil {
+			log.Tracef("DEBUG:ERROR_SENDING_RESPONSE %+v", err)
 			return err
 		}
 	}
