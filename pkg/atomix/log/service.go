@@ -16,6 +16,7 @@ package log
 
 import (
 	"bytes"
+	log "github.com/sirupsen/logrus"
 	"io"
 
 	"github.com/lucasbfernandes/go-framework/pkg/atomix/primitive"
@@ -517,17 +518,23 @@ func (m *Service) Events(bytes []byte, stream primitive.Stream) {
 }
 
 func (m *Service) sendEvent(event *ListenResponse) {
+	log.Tracef("GO_FRAMEWORK:START_SEND_EVENT %+v", event)
 	bytes, _ := proto.Marshal(event)
 	for sessionID, listeners := range m.listeners {
-
+		log.Tracef("GO_FRAMEWORK:STEP_SESSION_ID %+v", sessionID)
+		log.Tracef("GO_FRAMEWORK:STEP_LISTENERS %+v", listeners)
 		session := m.Session(sessionID)
+		log.Tracef("GO_FRAMEWORK:STEP_SESSION_OBJ %+v", session)
 		if session != nil {
 			for _, listener := range listeners {
+				log.Tracef("GO_FRAMEWORK:STEP_LISTENER %+v", listener)
 				if listener.index > 0 {
 					if event.Index == listener.index {
+						log.Tracef("GO_FRAMEWORK:STEP_SEND_INDEX_EQUAL_EVENT")
 						listener.stream.Value(bytes)
 					}
 				} else {
+					log.Tracef("GO_FRAMEWORK:STEP_SEND_INDEX_LESS_ZERO")
 					listener.stream.Value(bytes)
 				}
 			}
