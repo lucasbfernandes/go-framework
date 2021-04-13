@@ -15,6 +15,7 @@
 package primitive
 
 import (
+	"fmt"
 	"io"
 )
 
@@ -97,6 +98,7 @@ func (c *serviceContext) setCurrentSession(session Session) {
 }
 
 func (c *serviceContext) Session(id SessionID) Session {
+	fmt.Printf("GO_FRAMEWORK:GET_SESSION serviceContext: %+v sessionId: %+v\n", c, id)
 	return c.sessions[id]
 }
 
@@ -110,11 +112,13 @@ func (c *serviceContext) Sessions() []Session {
 
 // addSession adds a session to the service
 func (c *serviceContext) addSession(session Session) {
+	fmt.Printf("GO_FRAMEWORK:ADD_SESSION serviceContext: %+v session: %+v sessionId: %+v\n", c, session, session.ID())
 	c.sessions[session.ID()] = session
 }
 
 // removeSession removes a session from the service
 func (c *serviceContext) removeSession(session Session) {
+	fmt.Printf("GO_FRAMEWORK:REMOVE_SESSION serviceContext: %+v session: %+v sessionId: %+v\n", c, session, session.ID())
 	delete(c.sessions, session.ID())
 }
 
