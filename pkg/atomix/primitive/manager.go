@@ -425,6 +425,7 @@ func (m *Manager) applyServiceCommandClose(request *ServiceCommandRequest, conte
 		session := sessionManager.removeService(serviceID)
 		if session != nil {
 			service.setCurrentSession(session)
+			fmt.Printf("GO_FRAMEWORK:APPLY_SERVICE_COMMAND_CLOSE %+v\n", session)
 			service.removeSession(session)
 			if closed, ok := service.(SessionClosedService); ok {
 				closed.SessionClosed(session)
@@ -557,6 +558,7 @@ func (m *Manager) expireSessions() {
 			for _, session := range sessionManager.services {
 				service, ok := m.services[session.service]
 				if ok {
+					fmt.Printf("GO_FRAMEWORK:EXPIRE_SESSIONS %+v\n", session)
 					service.removeSession(session)
 					if expired, ok := service.(SessionExpiredService); ok {
 						expired.SessionExpired(session)
@@ -580,6 +582,7 @@ func (m *Manager) applyCloseSession(request *CloseSessionRequest, stream streams
 		for _, session := range sessionManager.services {
 			service, ok := m.services[session.service]
 			if ok {
+				fmt.Printf("GO_FRAMEWORK:APPLY_CLOSE_SESSION %+v\n", session)
 				service.removeSession(session)
 				if expired, ok := service.(SessionExpiredService); ok {
 					expired.SessionExpired(session)
