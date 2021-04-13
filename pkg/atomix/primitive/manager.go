@@ -234,6 +234,8 @@ func (m *Manager) Command(bytes []byte, stream streams.WriteStream) {
 	} else {
 		m.scheduler.runScheduledTasks(m.context.Timestamp())
 
+		fmt.Printf("GO_FRAMEWORK:COMMAND request %+v\n", request)
+
 		switch r := request.Request.(type) {
 		case *SessionRequest_Command:
 			m.applyCommand(r.Command, stream)
@@ -286,11 +288,13 @@ func (m *Manager) applyCommand(request *SessionCommandRequest, stream streams.Wr
 			sessionManager.scheduleCommand(sequenceNumber, func() {
 				util.SessionEntry(m.context.NodeID(), request.Context.SessionID).
 					Tracef("Executing command %d", sequenceNumber)
+				fmt.Printf("GO_FRAMEWORK:APPLY_COMMAND_SEQUENCE_NUMBER_GREATER sequenceNumber %+v nextCommandSequence %+v\n", sequenceNumber, sessionManager.nextCommandSequence())
 				m.applySessionCommand(request, sessionManager, stream)
 			})
 		} else {
 			util.SessionEntry(m.context.NodeID(), request.Context.SessionID).
 				Tracef("Executing command %d", sequenceNumber)
+			fmt.Printf("GO_FRAMEWORK:APPLY_COMMAND_LAST_ELSE sequenceNumber %+v nextCommandSequence %+v\n", sequenceNumber, sessionManager.nextCommandSequence())
 			m.applySessionCommand(request, sessionManager, stream)
 		}
 	}
